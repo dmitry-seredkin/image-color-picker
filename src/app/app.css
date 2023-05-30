@@ -1,0 +1,40 @@
+:root {
+  /* Colors */
+  --light-color: #ffffff;
+  --neutral-color: #e3e3e3;
+  /* Sizes */
+  --header-height: 3rem;
+  /* Spaces */
+  --application-padding: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--application-padding);
+  background-color: var(--light-color);
+}
+
+.app__content {
+  background-color: var(--neutral-color);
+  overflow: hidden;
+}
