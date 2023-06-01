@@ -1,0 +1,13 @@
+.button {
+  all: unset;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid black;
+}
+
+.button:hover {
+  background-color: #f3f3f3;
+}
+
+.button:not(:disabled) {
+  cursor: pointer;
+}
