@@ -1,0 +1,9 @@
+:root {
+  --icon-size-m: 1.5rem;
+}
+
+.icon {
+  width: var(--icon-size-m);
+  height: var(--icon-size-m);
+  fill: currentColor;
+}
