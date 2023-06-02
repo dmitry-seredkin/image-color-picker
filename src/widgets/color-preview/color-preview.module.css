@@ -7,6 +7,10 @@
   border-radius: var(--radius-m);
 }
 
+.container:hover {
+  background-color: var(--color-neutral-200);
+}
+
 .preview {
   --preview-size: 2.5rem;
 

@@ -1,0 +1,5 @@
+.link {
+  all: unset;
+  user-select: none;
+  cursor: pointer;
+}
