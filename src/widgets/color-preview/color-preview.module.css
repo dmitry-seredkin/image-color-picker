@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preview {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.25rem;
+  border: 1px solid black;
+}
+
+.color {
+  font-size: 1.25rem;
+}
