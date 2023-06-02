@@ -4,4 +4,4 @@ export const writeToClipboard = async (text: string) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
