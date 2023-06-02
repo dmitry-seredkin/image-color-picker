@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--application-padding);
+  background-color: var(--light-color);
+}
+
+.content {
+  padding: var(--application-padding);
+  background-color: var(--neutral-color);
+  overflow: hidden;
+}

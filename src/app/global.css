@@ -5,7 +5,7 @@
   /* Sizes */
   --header-height: 3rem;
   /* Spaces */
-  --application-padding: 2rem;
+  --application-padding: 1.5rem;
 }
 
 * {
@@ -24,17 +24,4 @@ body,
 #root {
   display: grid;
   grid-template-rows: auto 1fr;
-}
-
-.app__header {
-  display: flex;
-  align-items: center;
-  height: var(--header-height);
-  padding: 0 var(--application-padding);
-  background-color: var(--light-color);
-}
-
-.app__content {
-  background-color: var(--neutral-color);
-  overflow: hidden;
 }
