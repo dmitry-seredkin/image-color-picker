@@ -1,4 +1,7 @@
 :root {
+  /* App Configuration */
+  --application-padding: var(--spacing-xl);
+  --header-height: 5rem;
   /* Colors */
   --color-light-100: #ffffff;
   --color-neutral-100: #f0f0f0;
@@ -11,8 +14,6 @@
   /* Radius */
   --radius-m: 0.25rem;
   --radius-full: 50%;
-  /* Sizes */
-  --header-height: 3rem;
   /* Spaces */
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
@@ -20,7 +21,6 @@
   --spacing-m: 1rem;
   --spacing-l: 1.5rem;
   --spacing-xl: 2rem;
-  --application-padding: var(--spacing-xl);
 }
 
 * {

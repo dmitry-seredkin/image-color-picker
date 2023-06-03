@@ -4,8 +4,10 @@ import { classnames as cn } from "../../utils";
 
 import s from "./button.module.css";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  active?: boolean;
+}
 
-export const Button = ({ className, ...props }: ButtonProps) => (
-  <button className={cn(className, s.button)} {...props} />
+export const Button = ({ className, active, ...props }: ButtonProps) => (
+  <button className={cn(className, s.button, active && s["active-button"])} {...props} />
 );

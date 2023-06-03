@@ -1,3 +1,7 @@
+.placeholder {
+  font-size: var(--font-size-l);
+}
+
 .container {
   display: flex;
   align-items: center;

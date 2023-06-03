@@ -4,11 +4,11 @@
   align-items: center;
   height: var(--header-height);
   padding: 0 var(--application-padding);
-  background-color: var(--light-color);
+  background-color: var(--color-light-100);
 }
 
 .content {
   padding: var(--application-padding);
-  background-color: var(--neutral-color);
+  background-color: var(--color-neutral-300);
   overflow: hidden;
 }

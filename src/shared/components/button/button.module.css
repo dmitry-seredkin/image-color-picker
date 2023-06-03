@@ -1,13 +1,18 @@
 .button {
   all: unset;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid black;
+  display: flex;
+  padding: var(--spacing-s);
+  border-radius: var(--radius-full);
 }
 
 .button:hover {
-  background-color: #f3f3f3;
+  background-color: var(--color-neutral-200);
 }
 
 .button:not(:disabled) {
   cursor: pointer;
+}
+
+.active-button {
+  background-color: var(--color-neutral-300);
 }
