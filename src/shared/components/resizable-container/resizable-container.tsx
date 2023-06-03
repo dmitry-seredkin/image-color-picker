@@ -1,16 +1,18 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { HTMLAttributes, ReactNode, useEffect, useRef, useState } from "react";
 
-interface ContainerDimensions {
-  width: number;
-  height: number;
+import { Dimensions } from "../../models";
+import { classnames as cn } from "../../utils";
+
+import s from "./resizable-container.module.css";
+
+type DefaultProps = HTMLAttributes<HTMLDivElement>;
+
+interface ResizableContainerProps extends Omit<DefaultProps, "children"> {
+  children: (dimensions: Dimensions) => ReactNode;
 }
 
-interface ResizableContainerProps {
-  children: (dimensions: ContainerDimensions) => ReactNode;
-}
-
-export const ResizableContainer = ({ children }: ResizableContainerProps) => {
-  const [dimensions, setDimensions] = useState<ContainerDimensions | null>(null);
+export const ResizableContainer = ({ className, children, ...props }: ResizableContainerProps) => {
+  const [dimensions, setDimensions] = useState<Dimensions | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const ResizableContainer = ({ children }: ResizableContainerProps) => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
+    <div {...props} ref={containerRef} className={cn(className, s.container)}>
       {dimensions && children(dimensions)}
     </div>
   );
