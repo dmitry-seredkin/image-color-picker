@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  position: relative;
+  border: 0.75rem solid transparent;
+  border-radius: var(--radius-full);
+  outline: 0.25rem solid var(--color-light-100);
+}
+
+.dropper {
+  border-radius: inherit;
+}
+
+.preview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: var(--spacing-xxs);
+  color: var(--color-light-100);
+  background-color: var(--color-neutral-400);
+  border-radius: var(--radius-m);
+  transform: translate3d(-50%, 100%, 0);
+}
