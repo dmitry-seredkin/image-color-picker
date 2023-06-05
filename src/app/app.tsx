@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 import { Button, ResizableContainer } from "../shared/components";
-import { ColorPreview } from "../widgets/color-preview";
-// import { Board } from "../widgets/board";
+import { ColorPreview } from "../features/color-preview";
 import { ColorPickerIcon } from "../shared/components/icons";
 
 import s from "./app.module.css";
@@ -20,15 +19,10 @@ export const App = () => {
         <Button active={isDropperActive} onClick={toggleDropper}>
           <ColorPickerIcon />
         </Button>
-        {isDropperActive && <ColorPreview color={selectedColor} />}
+        {isDropperActive && <ColorPreview color={selectedColor} fallback="Click on image to see the color!" />}
       </header>
       <main className={s.content}>
-        <ResizableContainer>
-          {(sizes) => (
-            <p>{JSON.stringify(sizes)}</p>
-            // <Board {...sizes} cursor={isDropperActive ? "dropper" : "default"} onColorSelect={setSelectedColor} />
-          )}
-        </ResizableContainer>
+        <ResizableContainer>{(dimensions) => <p>{JSON.stringify(dimensions)}</p>}</ResizableContainer>
       </main>
     </>
   );

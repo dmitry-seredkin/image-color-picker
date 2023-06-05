@@ -8,11 +8,12 @@ import s from "./color-preview.module.css";
 
 interface ColorPreviewProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
   color: string | null;
+  fallback?: string;
 }
 
-export const ColorPreview = ({ className, color, ...props }: ColorPreviewProps) => {
+export const ColorPreview = ({ className, color, fallback, ...props }: ColorPreviewProps) => {
   if (color == null) {
-    return <p className={s.placeholder}>Click on image to see result!</p>;
+    return <p className={s.placeholder}>{fallback}</p>;
   }
 
   return (

@@ -8,7 +8,5 @@
 }
 
 .content {
-  padding: var(--application-padding);
-  background-color: var(--color-neutral-300);
   overflow: hidden;
 }
