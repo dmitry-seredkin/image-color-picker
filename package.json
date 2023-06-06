@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
+  "homepage": "https://dmitry-seredkin.github.io/image-color-picker",
   "dependencies": {
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.7",
@@ -13,6 +14,8 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "eject": "react-scripts eject",
@@ -41,6 +44,7 @@
     "eslint-config-prettier": "8.8.0",
     "eslint-import-resolver-typescript": "3.5.5",
     "eslint-plugin-prettier": "4.2.1",
+    "gh-pages": "5.0.0",
     "prettier": "2.8.8",
     "tsconfig-paths-webpack-plugin": "4.0.1"
   }
