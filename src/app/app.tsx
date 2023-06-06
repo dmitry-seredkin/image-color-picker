@@ -2,16 +2,31 @@ import { useState } from "react";
 
 import { Button, ResizableContainer } from "../shared/components";
 import { ColorPreview } from "../features/color-preview";
+import { Board } from "../widgets/board";
 import { ColorPickerIcon } from "../shared/components/icons";
+import type { Color } from "../shared/models";
 
 import s from "./app.module.css";
 import "./global.css";
 
+const renderPrompt = (isDropperActive: boolean, selectedColor: Color | null) => {
+  if (!isDropperActive) return <p>Paste image and use dropper to pick color</p>;
+
+  if (!selectedColor) return <p>Click on image to pick color!</p>;
+
+  return <ColorPreview color={selectedColor} />;
+};
+
 export const App = () => {
   const [isDropperActive, setIsDropperActive] = useState<boolean>(false);
-  const [selectedColor /*, setSelectedColor */] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<Color | null>(null);
 
-  const toggleDropper = () => setIsDropperActive((isActive) => !isActive);
+  const toggleDropper = () =>
+    setIsDropperActive((isActive) => {
+      if (isActive) setSelectedColor(null);
+
+      return !isActive;
+    });
 
   return (
     <>
@@ -19,10 +34,14 @@ export const App = () => {
         <Button active={isDropperActive} onClick={toggleDropper}>
           <ColorPickerIcon />
         </Button>
-        {isDropperActive && <ColorPreview color={selectedColor} fallback="Click on image to see the color!" />}
+        {renderPrompt(isDropperActive, selectedColor)}
       </header>
       <main className={s.content}>
-        <ResizableContainer>{(dimensions) => <p>{JSON.stringify(dimensions)}</p>}</ResizableContainer>
+        <ResizableContainer>
+          {(dimensions) => (
+            <Board {...dimensions} cursor={isDropperActive ? "dropper" : "default"} onColorSelect={setSelectedColor} />
+          )}
+        </ResizableContainer>
       </main>
     </>
   );
