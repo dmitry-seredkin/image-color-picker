@@ -1,8 +1,8 @@
 import { HTMLAttributes } from "react";
 
-import { Link } from "../../shared/components";
-import { ContentCopyIcon } from "../../shared/components/icons";
-import { classnames as cn, writeToClipboard } from "../../shared/utils";
+import { Link } from "shared/components";
+import { ContentCopyIcon } from "shared/components/icons";
+import { classnames as cn, writeToClipboard } from "shared/utils";
 
 import s from "./color-preview.module.css";
 

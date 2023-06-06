@@ -1,6 +1,6 @@
-import { Dimensions, Pixels, Position } from "../../shared/models";
-import { CanvasEngine } from "../../shared/services";
-import { convertRgbToHex, createImageElement } from "../../shared/utils";
+import { Dimensions, Pixels, Position } from "shared/models";
+import { CanvasEngine } from "shared/services";
+import { convertRgbToHex, createImageElement } from "shared/utils";
 
 const applyZoomToImage = (image: Dimensions, zoom: number): Dimensions => ({
   width: image.width * zoom,

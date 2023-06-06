@@ -1,6 +1,6 @@
-import { Pixels } from "../../shared/models";
-import { CanvasEngine } from "../../shared/services";
-import { createOffscreenGrid, getNaturalNumber } from "../../shared/utils";
+import { Pixels } from "shared/models";
+import { CanvasEngine } from "shared/services";
+import { createOffscreenGrid, getNaturalNumber } from "shared/utils";
 
 export interface ColorDropperCellConfig {
   count: number;

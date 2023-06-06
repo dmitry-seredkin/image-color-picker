@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes } from "react";
 
-import { classnames as cn } from "../../utils";
+import { classnames as cn } from "shared/utils";
 
 import s from "./link.module.css";
 

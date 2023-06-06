@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-import { classnames as cn } from "../../utils";
+import { classnames as cn } from "shared/utils";
 
 import s from "./button.module.css";
 

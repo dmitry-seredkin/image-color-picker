@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
-import { Position } from "../../models";
-import { classnames as cn } from "../../utils";
+import { Position } from "shared/models";
+import { classnames as cn } from "shared/utils";
 
 import s from "./positioned-container.module.css";
 

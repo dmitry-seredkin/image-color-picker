@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode, useEffect, useRef, useState } from "react";
 
-import { Dimensions } from "../../models";
-import { classnames as cn } from "../../utils";
+import { Dimensions } from "shared/models";
+import { classnames as cn } from "shared/utils";
 
 import s from "./resizable-container.module.css";
 

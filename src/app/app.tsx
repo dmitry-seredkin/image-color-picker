@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { Button, ResizableContainer } from "../shared/components";
-import { ColorPreview } from "../features/color-preview";
-import { Board } from "../widgets/board";
-import { ColorPickerIcon } from "../shared/components/icons";
-import type { Color } from "../shared/models";
+import { Button, ResizableContainer } from "shared/components";
+import { ColorPreview } from "features/color-preview";
+import { Board } from "widgets/board";
+import { ColorPickerIcon } from "shared/components/icons";
+import type { Color } from "shared/models";
 
 import s from "./app.module.css";
 import "./global.css";
