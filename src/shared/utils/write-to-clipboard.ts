@@ -1,4 +1,4 @@
-export const writeToClipboard = async (text: string) => {
+export const writeToClipboard = async (text: string): Promise<void> => {
   try {
     await navigator.clipboard.writeText(text);
   } catch (error) {
