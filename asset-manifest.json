@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/image-color-picker/static/css/main.0d6b342d.css",
+    "main.js": "/image-color-picker/static/js/main.7614988a.js",
+    "static/media/color-picker.svg": "/image-color-picker/static/media/color-picker.60995513f0fd2bad24b9571f5be957fb.svg",
+    "index.html": "/image-color-picker/index.html",
+    "static/media/content-copy.svg": "/image-color-picker/static/media/content-copy.cb56ee43f4c74ec8c4cab20bffafb9aa.svg",
+    "main.0d6b342d.css.map": "/image-color-picker/static/css/main.0d6b342d.css.map",
+    "main.7614988a.js.map": "/image-color-picker/static/js/main.7614988a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d6b342d.css",
+    "static/js/main.7614988a.js"
+  ]
+}
