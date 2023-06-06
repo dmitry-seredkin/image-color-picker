@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 
-import { ColorDropperEngine } from "./color-dropper-engine";
 import { Pixels } from "shared/models";
+
+import { ColorDropperEngine } from "./color-dropper-engine";
 
 import s from "./color-dropper.module.css";
 

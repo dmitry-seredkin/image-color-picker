@@ -1,9 +1,9 @@
-import { MouseEventHandler, WheelEventHandler, useEffect, useRef, useState, useLayoutEffect } from "react";
+import { MouseEventHandler, WheelEventHandler, useEffect, useLayoutEffect, useRef, useState } from "react";
 
+import { ColorDropper } from "features/color-dropper";
 import { PositionedContainer } from "shared/components";
 import { ArrowKey, Color, Dimensions, Position } from "shared/models";
 import { isArrowKey } from "shared/utils";
-import { ColorDropper } from "features/color-dropper";
 
 import { BoardEngine } from "./board-engine";
 
