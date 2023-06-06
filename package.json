@@ -1,7 +1,8 @@
 {
-  "name": "task",
-  "version": "0.1.0",
-  "private": true,
+  "name": "image-color-picker",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
   "dependencies": {
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.7",
