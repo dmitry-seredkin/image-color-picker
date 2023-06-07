@@ -2,9 +2,9 @@ module.exports = {
   arrowParens: "always",
   bracketSameLine: false,
   bracketSpacing: true,
-  endOfLine: "auto", // default: "lf"
+  endOfLine: "auto",
   jsxSingleQuote: false,
-  printWidth: 120, // default: 80
+  printWidth: 120,
   quoteProps: "as-needed",
   semi: true,
   singleAttributePerLine: false,

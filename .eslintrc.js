@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended",
+    "react-app",
     "plugin:prettier/recommended",
   ],
   rules: {
