@@ -29,3 +29,5 @@ You can also zoom in or out on the image to get a closer or wider view. Use the 
 In the dropper mode, you will see a dropper lens on the image. You can move this dropper lens around the image to examine different points and view the colors present in those areas.
 
 When the dropper lens is positioned over a specific point on the image, you can click on that point to choose the color. The selected color will be displayed, allowing you to note or use it for your desired purposes.
+
+**Note:** In the dropper mode, you can use the arrow keys for more precise navigation of the dropper lens.
