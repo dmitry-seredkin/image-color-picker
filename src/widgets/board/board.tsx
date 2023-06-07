@@ -1,4 +1,15 @@
-import { MouseEventHandler, WheelEventHandler, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  MouseEvent,
+  MouseEventHandler,
+  WheelEventHandler,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+
+import { throttle } from "lodash";
 
 import { ColorDropper } from "features/color-dropper";
 import { PositionedContainer } from "shared/components";
@@ -25,6 +36,12 @@ const ARROW_MOVEMENT: Record<ArrowKey, [number, number]> = {
 const COLOR_DROPPER_RADIUS = 10;
 const SCROLL_SENSITIVITY = 0.0005;
 
+const getEventPosition = ({ nativeEvent }: MouseEvent<HTMLCanvasElement>): Position => {
+  const { offsetX, offsetY } = nativeEvent;
+
+  return { x: offsetX, y: offsetY };
+};
+
 export const Board = ({ cursor = "default", width, height, onColorSelect, ...props }: BoardProps) => {
   const engineRef = useRef<BoardEngine>(new BoardEngine());
   const dragStartRef = useRef<Position | null>(null);
@@ -32,7 +49,7 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
 
   const isDropperCursor = cursor === "dropper";
 
-  const pickCursorColor = () => {
+  const selectCursorColor = () => {
     if (!(isDropperCursor && position && onColorSelect)) return;
 
     const pixels = engineRef.current.getPixels(position);
@@ -40,35 +57,33 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
     onColorSelect(pixels[0][0]);
   };
 
-  const cleanCursorPosition: MouseEventHandler<HTMLCanvasElement> = () => {
+  const clearCursorPosition: MouseEventHandler<HTMLCanvasElement> = () => {
     if (isDropperCursor) return setPosition(null);
 
     dragStartRef.current = null;
   };
 
-  const updateCursorPosition: MouseEventHandler<HTMLCanvasElement> = ({ nativeEvent }) => {
-    const { offsetX, offsetY } = nativeEvent;
-
-    setPosition({ x: offsetX, y: offsetY });
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const updateCursorPosition: MouseEventHandler<HTMLCanvasElement> = useCallback(
+    throttle((event) => setPosition(getEventPosition(event)), 16),
+    []
+  );
 
   const captureDragStart: MouseEventHandler<HTMLCanvasElement> = (event) => {
     if (isDropperCursor) return;
 
-    const { offsetX, offsetY } = event.nativeEvent;
-
-    dragStartRef.current = { x: offsetX, y: offsetY };
+    dragStartRef.current = getEventPosition(event);
   };
 
   const captureDrag: MouseEventHandler<HTMLCanvasElement> = (event) => {
     if (isDropperCursor) return updateCursorPosition(event);
-
-    const { offsetX, offsetY } = event.nativeEvent;
-
     if (dragStartRef.current == null) return;
 
-    engineRef.current.move(offsetX - dragStartRef.current.x, offsetY - dragStartRef.current.y);
-    dragStartRef.current = { x: offsetX, y: offsetY };
+    const start = dragStartRef.current;
+    const end = getEventPosition(event);
+
+    engineRef.current.move(end.x - start.x, end.y - start.y);
+    dragStartRef.current = end;
   };
 
   const captureDragEnd: MouseEventHandler<HTMLCanvasElement> = () => {
@@ -77,8 +92,11 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
     dragStartRef.current = null;
   };
 
-  const updateZoom: WheelEventHandler<HTMLCanvasElement> = ({ deltaY }) =>
+  const updateZoom: WheelEventHandler<HTMLCanvasElement> = ({ deltaY }) => {
+    if (isDropperCursor) return;
+
     engineRef.current.adjust(deltaY * SCROLL_SENSITIVITY);
+  };
 
   useLayoutEffect(() => {
     engineRef.current.resize(width, height);
@@ -86,8 +104,6 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
 
   useEffect(() => {
     if (isDropperCursor) {
-      console.debug("Use arrow keys for more precise dropper navigation!");
-
       const onKeyDown = (event: KeyboardEvent) => {
         if (!isArrowKey(event.code)) return;
 
@@ -113,9 +129,7 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
 
       const image = clipboardData.files.item(0);
 
-      if (image == null) return console.debug("There is no file to paste!");
-
-      if (!image.type.startsWith("image/")) return console.debug("You can paste image only!");
+      if (image == null || !image.type.startsWith("image/")) return;
 
       engineRef.current.insert(image);
     };
@@ -130,19 +144,19 @@ export const Board = ({ cursor = "default", width, height, onColorSelect, ...pro
         {...props}
         ref={engineRef.current.initialize}
         style={{ cursor: isDropperCursor ? "none" : "default" }}
-        onClick={pickCursorColor}
+        onClick={selectCursorColor}
         onMouseDown={captureDragStart}
-        onMouseLeave={cleanCursorPosition}
+        onMouseLeave={clearCursorPosition}
         onMouseMove={captureDrag}
         onMouseUp={captureDragEnd}
         onWheel={updateZoom}
       >
         This browser doesn't support the canvas element.
       </canvas>
-      {isDropperCursor && (
+      {isDropperCursor && position && (
         <PositionedContainer position={position}>
           <ColorDropper
-            pixels={position ? engineRef.current.getPixels(position, COLOR_DROPPER_RADIUS) : [[]]}
+            pixels={engineRef.current.getPixels(position, COLOR_DROPPER_RADIUS)}
             radius={COLOR_DROPPER_RADIUS}
             size={300}
           />

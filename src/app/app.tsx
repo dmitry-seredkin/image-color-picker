@@ -10,9 +10,13 @@ import s from "./app.module.css";
 import "./global.css";
 
 const renderPrompt = (isDropperActive: boolean, selectedColor: Color | null) => {
-  if (!isDropperActive) return <p>Paste image and use dropper to pick color</p>;
+  if (!isDropperActive) {
+    return <p className={s.prompt}>Copy and paste an image, use the dropper to select a color</p>;
+  }
 
-  if (!selectedColor) return <p>Click on image to pick color!</p>;
+  if (!selectedColor) {
+    return <p className={s.prompt}>Click on the image to select a color</p>;
+  }
 
   return <ColorPreview color={selectedColor} />;
 };

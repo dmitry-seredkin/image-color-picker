@@ -10,3 +10,7 @@
 .content {
   overflow: hidden;
 }
+
+.prompt {
+  font-size: var(--font-size-l);
+}

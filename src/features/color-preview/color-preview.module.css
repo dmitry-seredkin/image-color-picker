@@ -20,7 +20,8 @@
 
   width: var(--preview-size);
   height: var(--preview-size);
-  border-radius: var(--radius-m);
+  border: inherit;
+  border-radius: inherit;
 }
 
 .color {

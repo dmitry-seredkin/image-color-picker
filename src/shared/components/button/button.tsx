@@ -8,6 +8,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
 }
 
-export const Button = ({ className, active, ...props }: ButtonProps) => (
-  <button className={cn(className, s.button, active && s["active-button"])} {...props} />
+export const Button = ({ active, className, children, ...props }: ButtonProps) => (
+  <button className={cn(className, s.button, active && s["active-button"])} {...props}>
+    {children}
+  </button>
 );
