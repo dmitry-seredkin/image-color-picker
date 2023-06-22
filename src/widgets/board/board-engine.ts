@@ -100,7 +100,6 @@ export class BoardEngine extends CanvasEngine {
       }
       pixels.push(row);
     }
-
     return pixels;
   };
 }

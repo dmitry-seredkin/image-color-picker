@@ -1,1 +1,1 @@
-export { App } from "./app";
+export { Root as App } from "./root";
